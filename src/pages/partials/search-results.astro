@@ -1,0 +1,36 @@
+---
+import { getLocation } from '../../utils/data.js';
+import { getAddress } from '../../utils/address';
+let locations: any = [];
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const query = formData.get('q');
+  locations = (await getLocation(query)).results || [];
+}
+export const partial = true;
+---
+
+{
+  locations.length > 0 && (
+    <div
+      class="dropdown"
+    >
+      {locations.map((item) => (
+        <div
+          class="dropdown__link__search_item"
+          x-data=`{
+            item: ${JSON.stringify(item)},
+          }`
+          @click="$store.weatherStore.setWeather(item)"
+        >
+          <div class="dropdown__link__search-item__text">
+            <div class="dropdown__link__search_item__title">{item.name}</div>
+            <div class="dropdown__link__search_item__subtitle">
+              {getAddress(item)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}

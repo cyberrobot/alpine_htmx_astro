@@ -1,0 +1,99 @@
+.dropdown {
+  width: 18.75rem;
+  position: absolute;
+  margin-top: 0.125rem;
+  border-radius: 12px;
+  padding: 0.75rem;
+  border: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-dark);
+  box-shadow: var(--vp-shadow-3);
+  transition: background-color 0.5s;
+  max-height: calc(100vh - var(--vp-nav-height));
+  overflow-y: auto;
+}
+
+.dropdown__link {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+  padding: 0 12px;
+  line-height: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vp-c-text-1-soft);
+  white-space: nowrap;
+  transition: background-color 0.25s, color 0.25s;
+  cursor: pointer;
+}
+
+.dropdown__link:hover {
+  color: var(--vp-c-brand-lighter);
+  background-color: var(--vp-c-default-soft);
+}
+
+.dropdown_inactive:hover {
+  color: var(--vp-c-text-1-soft);
+  background: transparent;
+  cursor: default;
+}
+
+.dropdown__link__search_item {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.8rem;
+  margin: 0 -0.8rem;
+  color: var(--vp-c-text-1-soft);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.dropdown__link__search_item:first-child {
+  margin-top: -0.75rem;
+}
+
+.dropdown__link__search_item:last-child {
+  margin-bottom: -0.75rem;
+}
+
+.dropdown__link__search_item:hover {
+  color: var(--vp-c-brand-lighter);
+  background-color: var(--vp-c-default-soft);
+}
+
+.dropdown__link__search_item__subtitle {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: var(--vp-c-text-2-soft);
+}
+
+@media (prefers-color-scheme: light) {
+  .dropdown {
+    background-color: var(--vp-c-bg-soft);
+    border-color: var(--vp-c-divider-soft);
+  }
+
+  .dropdown__link {
+    color: var(--vp-c-text-1);
+  }
+
+  .dropdown__link:hover {
+    color: var(--vp-c-brand-1);
+  }
+
+  .dropdown__link__search_item {
+    color: var(--vp-c-text-1);
+  }
+
+  .dropdown__link__search_item:hover {
+    color: var(--vp-c-brand-1);
+  }
+
+  .dropdown__link__search_item__subtitle {
+    color: var(--vp-c-text-2);
+  }
+}
