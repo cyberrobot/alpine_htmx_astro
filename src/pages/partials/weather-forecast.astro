@@ -1,0 +1,30 @@
+---
+import { getWeatherForecast } from '../../utils/data.js';
+import { getLocaleDate } from '../../utils/date.js';
+import { toInt } from '../../utils/number.js';
+const response = await Astro.request;
+const url = new URL(response.url);
+const lat = url.searchParams.get('lat');
+const lng = url.searchParams.get('lng');
+let data = await getWeatherForecast({ lat, lng });
+
+export const partial = true;
+---
+
+<div class="weather-daily">
+  {
+    data.daily.time.map((day, index) => {
+      return (
+        <div>
+          <p>{getLocaleDate(day)}</p>
+          <h3>
+            <strong>
+              {toInt(data.daily.temperature_2m_max[index])}{' '}
+              {data.daily_units.temperature_2m_max}
+            </strong>
+          </h3>
+        </div>
+      );
+    })
+  }
+</div>

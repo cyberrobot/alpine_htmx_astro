@@ -18,10 +18,11 @@ export const partial = true;
       {locations.map((item) => (
         <div
           class="dropdown__link__search_item"
-          x-data=`{
-            item: ${JSON.stringify(item)},
-          }`
-          @click="$store.weatherStore.setWeather(item)"
+          hx-vals=`{"lat":${item.latitude},"lng":${item.longitude}}`
+          hx-get="/partials/weather-forecast"
+          hx-target="#weather-forecast"
+          hx-swap="innerHTML"
+          x-on:click="open = false"
         >
           <div class="dropdown__link__search-item__text">
             <div class="dropdown__link__search_item__title">{item.name}</div>

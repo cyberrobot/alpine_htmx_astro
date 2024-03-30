@@ -1,15 +1,16 @@
 ---
 import '../styles/main.css';
 import '../styles/search-results.css';
+import '../styles/weather-forecast.css';
 import Typeahead from '../components/Typeahead/Typeahead.astro';
 ---
 
 <script>
-  import { Alpine } from 'alpinejs';
+  import Alpine from 'alpinejs';
   Alpine.store('weatherStore', {
-    weather: {},
-    setWeather(weather) {
-      this.weather = weather;
+    location: {},
+    setLocation(location) {
+      this.location = location;
     },
   });
 </script>
@@ -27,8 +28,7 @@ import Typeahead from '../components/Typeahead/Typeahead.astro';
       <div class="side_by_side">
         <Typeahead />
       </div>
-      <div x-data="{ data: $store.weatherStore }" x-html="JSON.stringify(data)">
-      </div>
+      <div id="weather-forecast"></div>
     </div>
   </body>
 </html>
